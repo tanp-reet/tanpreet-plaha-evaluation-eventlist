@@ -209,8 +209,8 @@ class EventListController {
             if(event.target.classList.contains("save-edit-btn")) {
                 const eventID = event.target.parentElement.parentElement.id
                 const eventName = document.querySelector("#event-name-"+eventID).value
-                const startDate = document.querySelector("#event-start"+eventID).value
-                const endDate = document.querySelector("#event-end"+eventID).value
+                const startDate = document.querySelector("#event-start-"+eventID).value
+                const endDate = document.querySelector("#event-end-"+eventID).value
 
                 await editEvent(eventID, {eventName: eventName, startDate: startDate, endDate: endDate})
                 
