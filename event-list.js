@@ -73,11 +73,30 @@ class EventListView {
         const currEventElement = document.getElementById(restoreEvent.id)
 
         currEventElement.innerHTML = `
-
             <div class="event-details" id="${restoreEvent.id}">
                 <span id="event-name-${restoreEvent.id}">${restoreEvent.eventName}</span>
                 <span id="event-start-${restoreEvent.id}">${restoreEvent.startDate}</span>
                 <span id="event-end-${restoreEvent.id}">${restoreEvent.endDate}</span>
+                <div class="buttons-container">
+                    <button class="edit-btn">
+                        E
+                    </button>
+                    <button class="del-btn">
+                        D
+                    </button>
+                </div>
+            </div>
+        `
+    }
+
+    updateEvent(eventID, {eventName, startDate, endDate}) {
+        const currEventElement = document.getElementById(eventID)
+
+        currEventElement.innerHTML = `
+            <div class="event-details" id="${eventID.id}">
+                <span id="event-name-${eventID.id}">${eventName}</span>
+                <span id="event-start-${eventID.id}">${startDate}</span>
+                <span id="event-end-${eventID.id}">${endDate}</span>
                 <div class="buttons-container">
                     <button class="edit-btn">
                         E
@@ -114,6 +133,18 @@ class EventLisModel {
             }
         }
     }
+    
+    updateEvent(eventID, {eventName, startDate, endDate}) {
+        for(const event of this.#listOfEvents) {
+            if(event.id === eventID) {
+                event.eventName = eventName
+                event.startDate = startDate
+                event.endDate = endDate
+                return
+            }
+        }
+    }
+
 
     getEvents() {
         return this.#listOfEvents
@@ -213,7 +244,8 @@ class EventListController {
                 const endDate = document.querySelector("#event-end-"+eventID).value
 
                 await editEvent(eventID, {eventName: eventName, startDate: startDate, endDate: endDate})
-                
+                this.model.updateEvent(eventID, {eventName: eventName, startDate: startDate, endDate: endDate})
+                this.view.updateEvent(eventID, {eventName: eventName, startDate: startDate, endDate: endDate})
             }
         })
     }
