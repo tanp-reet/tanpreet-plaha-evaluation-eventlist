@@ -145,6 +145,9 @@ class EventLisModel {
         }
     }
 
+    deleteEvent(eventID) {
+        this.#listOfEvents.filter((event) => event.id !== eventID)
+    }
 
     getEvents() {
         return this.#listOfEvents
@@ -175,6 +178,7 @@ class EventListController {
         this.editEventBtnHandler()
         this.cancelEditEventBtnHandler()
         this.saveEditEventBtnHandler()
+        this.deleteBtnHandler()
     }
 
     newEventBtnHandler() {
@@ -253,7 +257,10 @@ class EventListController {
     deleteBtnHandler() {
         this.view.allEventsElement.addEventListener("click", async (event) => {
             if(event.target.classList.contains("del-btn")) {
-                
+                const eventID = event.target.parentElement.parentElement.id
+                await deleteEvent(eventID)
+                this.model.deleteEvent(eventID)
+                this.view.removeEventRow(eventID)
             }
         })
     }
