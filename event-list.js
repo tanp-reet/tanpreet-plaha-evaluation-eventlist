@@ -12,80 +12,81 @@ class EventListView {
 
     createEventRow() {
         this.allEventsElement.innerHTML += `
-            <div class="event-details" id="placeholder">
-                <input type="text" id="event-name-placeholder">
-                <input type="date" id="event-start-placeholder">
-                <input type="date" id="event-end-placeholder">
-                <div class="buttons-container">
+            <tr class="event-details" id="placeholder">
+                <td><input type="text" id="event-name-placeholder"></td>
+                <td><input type="date" id="event-start-placeholder"></td>
+                <td><input type="date" id="event-end-placeholder"></td>
+                <td class="buttons-container">
                     <button class="add-btn">
                         +
                     </button>
                     <button class="cancel-btn">
                         X
                     </button>
-                </div>
-            </div>
+                </td>
+            </tr>
         `
     }
 
     addEvent(newEvent) {
         this.allEventsElement.innerHTML += `
-            <div class="event-details" id="${newEvent.id}">
-                <span id="event-name-${newEvent.id}">${newEvent.eventName}</span>
-                <span id="event-start-${newEvent.id}">${newEvent.startDate}</span>
-                <span id="event-end-${newEvent.id}">${newEvent.endDate}</span>
-                <div class="buttons-container">
+            <tr class="event-details" id="${newEvent.id}">
+                <td><span id="event-name-${newEvent.id}">${newEvent.eventName}</td>
+                <td><span id="event-start-${newEvent.id}">${newEvent.startDate}</td>
+                <td><span id="event-end-${newEvent.id}">${newEvent.endDate}</td>
+                <td class="buttons-container">
                     <button class="edit-btn">
                         E
                     </button>
                     <button class="del-btn">
                         D
                     </button>
-                </div>
-            </div>
+                </td>
+            </tr>
         `
     }
 
     editEventOption(eventID) {
         const currEventElement = document.getElementById(eventID)
-        const eventName = document.getElementById("event-name-"+eventID).textContent
+        const eventNameEle = document.getElementById("event-name-"+eventID)
+        const eventName = eventNameEle.textContent
         const startDate = document.getElementById("event-start-"+eventID).innerText
         const endDate = document.getElementById("event-end-"+eventID).innerText
         currEventElement.innerHTML = `
-            <div class="event-details" id="${eventID}">
-                <input type="text" id="event-name-${eventID}" value="${eventName}">
-                <input type="date" id="event-start-${eventID}" value="${startDate}">
-                <input type="date" id="event-end-${eventID}" value="${endDate}">
-                <div class="buttons-container">
+            <tr class="event-details" id="${eventID}">
+                <td><input type="text" id="event-name-${eventID}" value="${eventName}"></td>
+                <td><input type="date" id="event-start-${eventID}" value="${startDate}"></td>
+                <td><input type="date" id="event-end-${eventID}" value="${endDate}"></td>
+                <td class="buttons-container">
                     <button class="save-edit-btn">
                         S
                     </button>
                     <button class="cancel-edit-btn">
                         X
                     </button>
-                </div>
-            </div>
+                </td>
+            </tr>
         `
-        return {eventName, startDate, endDate}
+        // return {eventName, startDate, endDate}
     }
 
     cancelEditEvent(restoreEvent) {
         const currEventElement = document.getElementById(restoreEvent.id)
 
         currEventElement.innerHTML = `
-            <div class="event-details" id="${restoreEvent.id}">
-                <span id="event-name-${restoreEvent.id}">${restoreEvent.eventName}</span>
-                <span id="event-start-${restoreEvent.id}">${restoreEvent.startDate}</span>
-                <span id="event-end-${restoreEvent.id}">${restoreEvent.endDate}</span>
-                <div class="buttons-container">
+            <tr class="event-details" id="${restoreEvent.id}">
+                <td><span id="event-name-${restoreEvent.id}">${restoreEvent.eventName}</span></td>
+                <td><span id="event-start-${restoreEvent.id}">${restoreEvent.startDate}</span></td>
+                <td><span id="event-end-${restoreEvent.id}">${restoreEvent.endDate}</span></td>
+                <td class="buttons-container">
                     <button class="edit-btn">
                         E
                     </button>
                     <button class="del-btn">
                         D
                     </button>
-                </div>
-            </div>
+                </td>
+            </tr>
         `
     }
 
@@ -93,19 +94,19 @@ class EventListView {
         const currEventElement = document.getElementById(eventID)
 
         currEventElement.innerHTML = `
-            <div class="event-details" id="${eventID.id}">
-                <span id="event-name-${eventID.id}">${eventName}</span>
-                <span id="event-start-${eventID.id}">${startDate}</span>
-                <span id="event-end-${eventID.id}">${endDate}</span>
-                <div class="buttons-container">
+            <tr class="event-details" id="${eventID}">
+                <td><span id="event-name-${eventID}">${eventName}</span></td>
+                <td><span id="event-start-${eventID}">${startDate}</span></td>
+                <td><span id="event-end-${eventID}">${endDate}</span></td>
+                <td class="buttons-container">
                     <button class="edit-btn">
                         E
                     </button>
                     <button class="del-btn">
                         D
                     </button>
-                </div>
-            </div>
+                </td>
+            </tr>
         `
     }
 
