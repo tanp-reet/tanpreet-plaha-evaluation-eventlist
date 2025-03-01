@@ -1,6 +1,55 @@
-.events-list-headings {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
+body {
+    margin: 50px auto;
+    text-align: center;
 }
+
+.table-container {
+    margin: 10px auto;
+    padding: 20px 10px;
+    border: 3px solid #e6e2d3;
+    border-radius: 7px;
+    width: 80%;
+}
+
+table {
+    margin: auto;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    th {
+        font-size: 1.5em;
+        padding: 12px;
+    }
+}
+
+input, span {
+    border: none;
+    padding: 7px 2px;
+    border-radius: 5px;
+    font-size: small;
+}
+
+td {
+    padding: 7px 0px;
+    border-top:5px solid white;
+    border-bottom:5px solid white;
+    font-size: small;
+}
+
+.event-details {
+    background-color: #e6e2d3;
+    padding: 60px;
+}
+
+button {
+    background-color: #008cba;
+    color: #f0f0f0;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.del-btn, .cancel-btn {
+    background-color: #c94c4c;
+}   
