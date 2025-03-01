@@ -7,23 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
-        <h2>Event List</h2>
+        <h1>Event List</h1>
         <button class="add-event-btn"> 
             Add New Event
         </button>
+    
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">End</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="events-list-container">
 
-        <div class="events-list-headings">
-                <h3>Event</h3>
-                <h3>Start</h3>
-                <h3>End</h3>
-                <h3>Actions</h3>
-        </div>
-
-        <div class="events-list-container">
-        </div>
+                </tbody>
+            </table>
     </div>
-
+    
     <script src="event-list-API.js"></script>
     <script src="event-list.js"></script>
 </body>
